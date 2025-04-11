@@ -26,6 +26,7 @@
 - Forge 1.21.5
 - Eclipse Temurin 21 LTS
 - Eclipse ではなく VSCode を使います
+    - また詳細は失念しましたが、Java まわりの拡張機能をいくつかインストールせねばなりません
 
 ## 初期設定
 `./gradlew genVSCodeRuns`
@@ -33,6 +34,7 @@
 ## デバッグ
 - F5 キー
 - あるいは Run and Debug サイドバーの runClient
+    - ここの設定を司る launch.json は、genVSCodeRuns したときに生成されるはず。パスを決め打ちするのでプロジェクトのディレクトリ変えたりしたときも修正が要る
 
 ## ビルド
 `./gradlew build`
