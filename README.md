@@ -4,6 +4,8 @@
 - 100マス松明の遊び方は解説しません
 - この MOD を導入すると、lightcount コマンドが追加されます
     - このコマンドを実行すると、worldborder 100 の地下（y=64以下）のうち、照らされている空気ブロックの数をカウントします。
+- この MOD は作者の処女作です
+    - ChatGPT と Cline に頼ってつくりました。実装面、導入面など至らぬ点が多そう。。。
 
 ![Image](https://github.com/user-attachments/assets/ab40dd51-3260-4a15-aa25-bbc1ce5d7be1)
 
@@ -11,7 +13,7 @@
 - 1: お使いのマイクラに Forge 1.25.1 をインストール
 - 2: マイクラランチャーの起動構成から Forge 1.25.1 を使う構成をつくって、適当にワールドつくってプレイ
 - これで mods/ フォルダが生成されるので、
-- 3: Release ページから、この MOD の jar ファイルを入手して、mods/ フォルダに置く
+- 3: [Release](https://github.com/stakiran/lightcount100/releases) ページから、この MOD の jar ファイルを入手して、mods/ フォルダに置く
 
 上手くいくと、以下のように MOD がロードされるはず。
 
