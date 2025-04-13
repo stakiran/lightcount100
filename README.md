@@ -41,5 +41,13 @@
 
 実行すると build/libs/*.jar が生成される。
 
+## バージョンの更新
+よくわかってないけど2箇所ある。
+
+- gradle.properties
+    - ビルドで生成 jar のファイル名は、こっち変えないと反映されない
+- mods.toml
+    - こっちはどこを司ってるのかよくわからない……
+
 # LICENSE
 [MIT](LICENSE)
