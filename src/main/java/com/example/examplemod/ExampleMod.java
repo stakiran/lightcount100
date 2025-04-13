@@ -17,9 +17,6 @@ import net.minecraftforge.fml.common.Mod;
 public class ExampleMod {
     public static final String MODID = "lightcounter100";
 
-    /**
-     * RegisterCommandsEvent でコマンドを登録する
-     */
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(
@@ -30,9 +27,6 @@ public class ExampleMod {
         );
     }
 
-    /**
-     * コマンドが呼び出されたときの処理
-     */
     private static int calculateLightLevel(CommandSourceStack source) {
         int totalLight = 0;
         int unloaded = 0;
