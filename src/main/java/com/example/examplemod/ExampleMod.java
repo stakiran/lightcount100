@@ -35,6 +35,7 @@ public class ExampleMod {
      */
     private static int calculateLightLevel(CommandSourceStack source) {
         int totalLight = 0;
+        int unloaded = 0;
         Level level = source.getLevel();
         BlockPos start = new BlockPos(-100, -64, -100);
         BlockPos end = new BlockPos(100, 64, 100);
@@ -43,6 +44,11 @@ public class ExampleMod {
             for (int y = start.getY(); y <= end.getY(); y++) {
                 for (int z = start.getZ(); z <= end.getZ(); z++) {
                     BlockPos pos = new BlockPos(x, y, z);
+                    // まだチャンクがロードされていない場合はスキップ
+                    if (!level.isLoaded(pos)) {
+                        unloaded += 1;
+                        continue;
+                    }
                     // AIR のみを対象
                     if (level.getBlockState(pos).getBlock() == Blocks.AIR) {
                         int blockLight = level.getBrightness(LightLayer.BLOCK, pos);
@@ -56,7 +62,7 @@ public class ExampleMod {
 
         // 実行者がプレイヤーならメッセージを送信
         if (source.getEntity() instanceof ServerPlayer player) {
-            player.sendSystemMessage(Component.literal("Total lighted blocks: " + totalLight));
+            player.sendSystemMessage(Component.literal("Total lighted blocks(and unloaded): " + totalLight + "(" + unloaded + ")"));
         }
 
         return totalLight;
