@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
@@ -34,9 +35,12 @@ public class ExampleMod {
     }
 
     private static int startCount(CommandSourceStack source) {
+        Minecraft.getInstance().setScreen(new HelloWorldScreen());
+
         if (source.getEntity() instanceof ServerPlayer player) {
             player.sendSystemMessage(Component.literal("lightcount: Timer start."));
         }
+
         return 0;
     }
 

@@ -30,3 +30,6 @@ forge*changelog.txt
 .vscode/
 # logs
 *.log
+
+# for conversation with cline.
+conote*.md
