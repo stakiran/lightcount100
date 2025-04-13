@@ -10,6 +10,8 @@
 ![Image](https://github.com/user-attachments/assets/ab40dd51-3260-4a15-aa25-bbc1ce5d7be1)
 
 # この MOD で遊ぶ
+
+## インストール
 - 1: お使いのマイクラに Forge 1.25.1 をインストール
 - 2: マイクラランチャーの起動構成から Forge 1.25.1 を使う構成をつくって、適当にワールドつくってプレイ
 - これで mods/ フォルダが生成されるので、
@@ -18,6 +20,9 @@
 上手くいくと、以下のように MOD がロードされるはず。
 
 ![Image](https://github.com/user-attachments/assets/c94af4e1-0a6c-4d56-92b0-15dbe87a5e71)
+
+## バージョンアップ
+この MOD の jar は、mods/ フォルダには一つだけを置いてください。たとえば 1.0.0 から 1.0.1 に更新したときは、1.0.0.jar の方は消してください。
 
 # (開発用README)
 [Introduction - Forge Documentation](https://docs.minecraftforge.net/en/latest/gettingstarted/) に従えばいいが、ここでもメモしとく
