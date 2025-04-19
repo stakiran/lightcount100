@@ -45,7 +45,7 @@ public class ExampleMod {
     }
 
     private static int calculateLightLevel(CommandSourceStack source) {
-        int totalLight = 0;
+        int darknessScore = 0;
         int unloaded = 0;
         Level level = source.getLevel();
         BlockPos start = new BlockPos(-100, -64, -100);
@@ -62,10 +62,9 @@ public class ExampleMod {
                     }
                     // AIR のみを対象
                     if (level.getBlockState(pos).getBlock() == Blocks.AIR) {
+                        // 0～15 が入る、0 が照らされてない
                         int blockLight = level.getBrightness(LightLayer.BLOCK, pos);
-                        // 0～15 が入る、0 が照らされてない。
-                        // スコアを単純にするため、照らされてるなら +1 する程度でいい
-                        totalLight += (blockLight > 0) ? 1 : 0;
+                        darknessScore += (blockLight == 0) ? 1 : 0;
                     }
                 }
             }
@@ -73,9 +72,9 @@ public class ExampleMod {
 
         // 実行者がプレイヤーならメッセージを送信
         if (source.getEntity() instanceof ServerPlayer player) {
-            player.sendSystemMessage(Component.literal("Total lighted blocks(and unloaded): " + totalLight + "(" + unloaded + ")"));
+            player.sendSystemMessage(Component.literal("暗闇スコア: " + darknessScore + "(" + unloaded + ")"));
         }
 
-        return totalLight;
+        return darknessScore;
     }
 }
