@@ -3,11 +3,11 @@
 
 - 100マス松明の遊び方は解説しません
 - この MOD を導入すると、lightcount コマンドが追加されます
-    - このコマンドを実行すると、worldborder 100 の地下（y=64以下）のうち、照らされている空気ブロックの数をカウントします。
-- この MOD は作者の処女作です
-    - ChatGPT と Cline に頼ってつくりました。実装面、導入面など至らぬ点が多そう。。。
+    - このコマンドを実行すると、暗闇スコアと暗闇率が計算されます
+    - 照らせば照らすほどスコアも率も減ります
+    - できるだけ減らしましょう！（照らしましょう！）
 
-![Image](https://github.com/user-attachments/assets/ab40dd51-3260-4a15-aa25-bbc1ce5d7be1)
+![Image](https://github.com/user-attachments/assets/44e32278-4d78-4bea-840c-6251b9de1260)
 
 # この MOD で遊ぶ
 
@@ -23,6 +23,14 @@
 
 ## バージョンアップ
 この MOD の jar は、mods/ フォルダには一つだけを置いてください。たとえば 1.0.0 から 1.0.1 に更新したときは、1.0.0.jar の方は消してください。
+
+## 細かい話
+
+## 暗闇計算アルゴリズム
+ver 1.1.0 時点
+
+- worldborder 100 の地下（y=64以下）のうち、照らされている空気ブロックの数をカウントする
+- その他細かい話はコード見て
 
 # (開発用README)
 [Introduction - Forge Documentation](https://docs.minecraftforge.net/en/latest/gettingstarted/) に従えばいいが、ここでもメモしとく
