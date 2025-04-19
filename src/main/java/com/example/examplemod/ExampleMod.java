@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = ExampleMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ExampleMod {
     public static final String MODID = "lightcounter100";
+    public static final int BORDER_SIZE = 100;
 
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
@@ -48,8 +49,9 @@ public class ExampleMod {
         int darknessScore = 0;
         int unloaded = 0;
         Level level = source.getLevel();
-        BlockPos start = new BlockPos(-100, -64, -100);
-        BlockPos end = new BlockPos(100, 64, 100);
+        int boundaryValue = BORDER_SIZE/2;
+        BlockPos start = new BlockPos(-boundaryValue, -64, -boundaryValue);
+        BlockPos end = new BlockPos(boundaryValue, 64, boundaryValue);
 
         for (int x = start.getX(); x <= end.getX(); x++) {
             for (int y = start.getY(); y <= end.getY(); y++) {
