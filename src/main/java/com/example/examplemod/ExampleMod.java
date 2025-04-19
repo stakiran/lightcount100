@@ -59,13 +59,17 @@ public class ExampleMod {
         }
 
         // チャンクロードがなくなったとき = 暗闇スコアも計算できてるはず、なので基準スコアにする
-        // - 暗闇スコアは開始直後は変動する（例: マグマが広がる）が、細かいし無視する
+        // まだ計算できてない場合はキャンセル
         boolean unloaded = !loaded;
         if (unloaded && unloadedCount == 0){
             loaded = true;
             baseScore = darknessScore;
         }
-        float darknessRate = 100 * (darknessScore / baseScore);
+        float darknessRate = 100 * ((float)darknessScore / baseScore);
+        boolean notCalculateYet = darknessRate>100;
+        if (notCalculateYet){
+            loaded = false;
+        }
 
         if (source.getEntity() instanceof ServerPlayer player) {
             player.sendSystemMessage(Component.literal("暗闇スコア(率): " + darknessScore + "(" + darknessRate + ")"));
