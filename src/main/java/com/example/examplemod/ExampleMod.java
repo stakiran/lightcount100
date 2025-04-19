@@ -1,6 +1,5 @@
 package com.example.examplemod;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
@@ -27,22 +26,6 @@ public class ExampleMod {
                     return calculateLightLevel(context.getSource());
                 })
         );
-        event.getDispatcher().register(
-            Commands.literal("lightcount-start")
-                .executes(context -> {
-                    return startCount(context.getSource());
-                })
-        );
-    }
-
-    private static int startCount(CommandSourceStack source) {
-        Minecraft.getInstance().setScreen(new HelloWorldScreen());
-
-        if (source.getEntity() instanceof ServerPlayer player) {
-            player.sendSystemMessage(Component.literal("lightcount: Timer start."));
-        }
-
-        return 0;
     }
 
     private static int calculateLightLevel(CommandSourceStack source) {
