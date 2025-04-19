@@ -18,6 +18,9 @@ public class ExampleMod {
     public static final String MODID = "lightcounter100";
     public static final int BORDER_SIZE = 100;
 
+    private static int baseScore = BORDER_SIZE*BORDER_SIZE*(64*2);
+    private static boolean loaded = false;
+
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(
@@ -30,7 +33,7 @@ public class ExampleMod {
 
     private static int calculateLightLevel(CommandSourceStack source) {
         int darknessScore = 0;
-        int unloaded = 0;
+        int unloadedCount = 0;
         Level level = source.getLevel();
         int boundaryValue = BORDER_SIZE/2;
         BlockPos start = new BlockPos(-boundaryValue, -64, -boundaryValue);
@@ -42,7 +45,7 @@ public class ExampleMod {
                     BlockPos pos = new BlockPos(x, y, z);
                     // まだチャンクがロードされていない場合はスキップ
                     if (!level.isLoaded(pos)) {
-                        unloaded += 1;
+                        unloadedCount += 1;
                         continue;
                     }
                     // AIR のみを対象
@@ -55,9 +58,17 @@ public class ExampleMod {
             }
         }
 
-        // 実行者がプレイヤーならメッセージを送信
+        // チャンクロードがなくなったとき = 暗闇スコアも計算できてるはず、なので基準スコアにする
+        // - 暗闇スコアは開始直後は変動する（例: マグマが広がる）が、細かいし無視する
+        boolean unloaded = !loaded;
+        if (unloaded && unloadedCount == 0){
+            loaded = true;
+            baseScore = darknessScore;
+        }
+        float darknessRate = 100 * (darknessScore / baseScore);
+
         if (source.getEntity() instanceof ServerPlayer player) {
-            player.sendSystemMessage(Component.literal("暗闇スコア: " + darknessScore + "(" + unloaded + ")"));
+            player.sendSystemMessage(Component.literal("暗闇スコア(率): " + darknessScore + "(" + darknessRate + ")"));
         }
 
         return darknessScore;
