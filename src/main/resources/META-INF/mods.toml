@@ -3,7 +3,7 @@ loaderVersion="[55,)" # Forge 1.21.5 なら 55 以上らしい
 license="MIT"
 [[mods]]
 modId="lightcounter100"
-version="1.0.1"
+version="1.1.0"
 displayName="Light Counter 100"
 description="light counter in worldborder-100 undergrounds."
 [[dependencies.examplemod]]
